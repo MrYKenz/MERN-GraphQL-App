@@ -1,0 +1,17 @@
+{
+  "name": "graphql-mern-app",
+  "version": "1.0.0",
+  "description": "MERN app using GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrYKenz",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.9.12",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.5.8",
+    "mongoose": "^5.7.13"
+  }
+}
