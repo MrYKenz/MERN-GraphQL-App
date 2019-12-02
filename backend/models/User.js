@@ -9,4 +9,4 @@ const userSchema = new Schema({
     createdAt: Date,
 });
 
-module.exports('User', userSchema);
+module.exports = model('User', userSchema);
