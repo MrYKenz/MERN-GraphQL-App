@@ -2,12 +2,12 @@ const { ApolloServer } = require('apollo-server'); // runs off express
 const mongoose = require('mongoose');
 
 require('dotenv').config(); // environment variables
-const typeDefs = require('./gql/typeDefs');
-const resolvers = require('./gql/resolvers');
+const typeDefs = require('./gql/typeDefs'); // type defintions file in subdirectory
+const resolvers = require('./gql/resolvers'); // index.js in gql resolvers subdirectory
 
 // connect to DB
 mongoose
-    .connect(process.env.DB_URI, { useNewUrlParser: true, useCreateIndex: true })
+    .connect(process.env.DB_URI, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log("Connected to MongoDB"));
 
 // ApolloServer constructor with GQL Schema Definitions and Resolvers
