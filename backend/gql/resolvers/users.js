@@ -39,7 +39,7 @@ module.exports = {
             return { ...res._doc, id: res._id, token }
         },
         async loginUser (parent, args) {
-            let { username, password } = args;
+            let { login: { username, password } } = args;
             const { valid, errors } = validateLogin(username, password);
             if (!valid) {
                 throw new UserInputError('Login Error', {errors})
