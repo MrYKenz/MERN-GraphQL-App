@@ -15,19 +15,24 @@ module.exports = gql`
         email: String!
         createdAt: String
     }
-    input Register { # gql argument createUser(register)
+    # gql arguments e.g. createUser(register: {username, password})
+    input Register { 
         username: String!
         password: String!
         email: String!
     }
-
+    input Login {
+        username: String!
+        password: String!
+    }
+    # gql query and mutation types
     type Query {
         getPosts: [Post]
         getPost(id: ID!): Post
     }
     type Mutation { 
         createUser(register: Register): User! # create user with Register input
-        loginUser(username: String!, password: String!): User! 
+        loginUser(login: Login): User! 
         createPost(title: String!, body: String!): Post!
         deletePost(id: ID!): String!
     }
