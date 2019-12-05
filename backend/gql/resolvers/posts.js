@@ -26,6 +26,9 @@ module.exports = {
         // context used to pass authorization header for JWT
             let { title, body } = args;
             const user = Auth(context);
+            if (body.trim() === "") {
+                throw new Error("Post can not be empty")
+            }
 
             const newPost = new Post({
                 title,
