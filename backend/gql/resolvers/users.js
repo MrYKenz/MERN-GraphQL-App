@@ -48,12 +48,12 @@ module.exports = {
             const user = await User.findOne({ username });
             // if username doesn't match user in DB
             if (!user) {
-                throw new UserInputError('User not found', { errors: {user: 'User not found'}});
+                throw new UserInputError('User not found', { errors: {username: 'User not found'}});
             }
             // match hashed password with user password from DB
             const checkPassword = await bcrypt.compare(password, user.password);
             if (!checkPassword) {
-                throw new UserInputError('Password Incorrect', { errors: {user: 'Password Incorrect'}});
+                throw new UserInputError('Password Incorrect', { errors: {password: 'Password Incorrect'}});
             }
             // create jwt to be returned but not stored
             const token = jwt.sign({id: user.id, email: user.email, username: user.username}, 
