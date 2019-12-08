@@ -12,7 +12,7 @@ mongoose
 
 // ApolloServer constructor with GQL Schema Definitions and Resolvers
 // Context argument takes request from Express and forwards it to Context
-const app = new ApolloServer({typeDefs, resolvers, context: ({req})=>({req})});
+const app = new ApolloServer({typeDefs, resolvers, context: (req)=>(req)});
 
 // launch webserver on port 5000 // use prcoess.env.PORT ??
 app.listen({port:5000})
