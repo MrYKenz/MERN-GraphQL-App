@@ -22,12 +22,12 @@ function Login() {
     const [LoginUser, { loading }] = useMutation(LOGIN_USER_MUTATION, 
         { 
             update(proxy, result) {
-                console.log(result)
-                // window.location.replace("/")
+                // console.log(result)
+                window.location.replace("/")
             }, 
             onError(err) {
                 // catches gql errors to use in state - present to user
-                console.log(err.graphQLErrors[0].extensions.exception.errors)
+                // console.log(err.graphQLErrors[0].extensions.exception.errors)
                 setErrors(err.graphQLErrors[0].extensions.exception.errors)
             },
             variables: values 
