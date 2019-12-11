@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import RegisterForm from '../components/RegisterForm'
+import RegisterForm from '../components/RegisterForm';
+import { AuthContext } from '../Auth';
 
 const CREATE_USER_MUTATION = gql`
     mutation register(
@@ -19,6 +20,7 @@ const CREATE_USER_MUTATION = gql`
 }`
 
 function Register() {
+    const context = useContext(AuthContext);
     const [values, setValues] = useState({ 
         username: '',
         email: '',
@@ -30,6 +32,7 @@ function Register() {
         { 
             update(proxy, result) {
                 // console.log(result)
+                context.login(result.data.loginUser);
                 window.location.replace("/")
             }, 
             onError(err) {

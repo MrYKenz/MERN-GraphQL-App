@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Header from './components/Header';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { AuthProvider } from './Auth';
 
 // apollo-link-http to pull graphql data to apollo-client
 const serverUri = createHttpLink({ uri: 'http://localhost:5000'});
@@ -19,16 +20,18 @@ const client = new ApolloClient({ link: serverUri, cache: new InMemoryCache()})
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Container>
-        <Router>
-          <Header/>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/Login' component={Login}/>
-          <Route exact path='/Register' component={Register}/>
-        </Router>
-      </Container>
-    </ApolloProvider>
+    <AuthProvider>
+      <ApolloProvider client={client}>
+        <Container>
+          <Router>
+            <Header/>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/Login' component={Login}/>
+            <Route exact path='/Register' component={Register}/>
+          </Router>
+        </Container>
+      </ApolloProvider>
+      </AuthProvider>
   );
 }
 
