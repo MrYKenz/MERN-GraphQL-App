@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
@@ -19,11 +19,6 @@ const Post = ({post: { id, title, body, username, createdAt }}) => (
         <Card.Description>
           {body}
         </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-          <Button basic color='red'>
-            Delete
-          </Button>
       </Card.Content>
     </Card>
   </Card.Group>
