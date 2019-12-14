@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Details from './pages/Details';
 import Header from './components/Header';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
@@ -33,6 +34,7 @@ function App() {
           <Router>
             <Header/>
             <Route exact path='/' component={Home}/>
+            <Route exact path='/posts/:postID' component={Details}/>
             <AuthRoute exact path='/Login' component={Login}/>
             <AuthRoute exact path='/Register' component={Register}/>
           </Router>
