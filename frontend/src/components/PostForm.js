@@ -6,9 +6,7 @@ import { useMutation } from '@apollo/react-hooks';
 const CREATE_POST_MUTATION = gql`
     mutation ($title: String! $body: String!) {
         createPost(title: $title body: $body) { 
-            id title body username createdAt 
-        }
-    }`
+            id title body username createdAt }}`
 
 function PostForm() {
     const [values, setValues] = useState({ title: '', body: ''});
@@ -16,7 +14,6 @@ function PostForm() {
 
     const [CreatePost, { error }] = useMutation(CREATE_POST_MUTATION, {
         update(proxy, result) {
-            // TODO - title validation on backend -> not empty
             console.log(result)
             // run query on previous results
             const data = proxy.readQuery({ query: 
@@ -33,16 +30,20 @@ function PostForm() {
             setErrors({ body: err.graphQLErrors[0].message })
         },
         variables: values 
-    })
+    });
 
     const onChange = e => {
         setValues({ ...values, [e.target.name]: e.target.value })
-      }
+      };
   
     const onSubmit = e => {
         e.preventDefault();
-        CreatePost();
-      }
+        if (values.title !== '') {
+            CreatePost();
+        } else {
+            setErrors({ title: 'Title cannot be empty' });
+        }
+      };
 
     return (
         <Form onSubmit={onSubmit}>
@@ -53,14 +54,15 @@ function PostForm() {
                     name="title"
                     onChange={onChange}
                     value={values.title}
-                    // error={errors.title}
+                    error={errors.title}
                 />
-                <Form.Input
-                    placeholder="Description"
+                <Form.TextArea
+                    placeholder="Description..."
                     name="body"
                     onChange={onChange}
                     value={values.body}
                     error={errors.body}
+                    rows="3"
                 />
                 <Button type="submit" color="violet">
                     Submit
@@ -69,6 +71,6 @@ function PostForm() {
             </Form.Field>
         </Form>
     )
-}
+};
 
-export default PostForm
+export default PostForm;
