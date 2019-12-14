@@ -5,7 +5,6 @@ import { AuthContext } from '../Auth';
 
 function Header() {
   const context = useContext(AuthContext);
-  console.log(context)
   // set active item to url pathname after the '/' except for home
   const path = window.location.pathname === '/' ? 'home' : 
   window.location.pathname.substring(1).toLowerCase();
@@ -29,7 +28,7 @@ function Header() {
       </Menu.Menu>
     </Menu>) : (
     <Menu pointing secondary color="violet">
-      <Menu.Item header>Posts</Menu.Item>
+      <Menu.Item header>Website</Menu.Item>
       <Menu.Item
         name='home'
         active={activeItem === 'home'}

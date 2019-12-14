@@ -12,7 +12,7 @@ function PostForm() {
     const [values, setValues] = useState({ title: '', body: ''});
     const [errors, setErrors] = useState({});
 
-    const [CreatePost, { error }] = useMutation(CREATE_POST_MUTATION, {
+    const [CreatePost] = useMutation(CREATE_POST_MUTATION, {
         update(proxy, result) {
             console.log(result)
             // run query on previous results
@@ -22,7 +22,7 @@ function PostForm() {
             console.log(data.getPosts)
             data.getPosts = [result.data.createPost, ...data.getPosts];
             proxy.writeQuery({ query: 
-                gql`{getPosts {id title body username createdAt}}`, data});
+                gql`{getPosts {id title body username createdAt}}`, data });
         },
         onError(err) {
             // catches gql errors to use in state - present to user
@@ -38,7 +38,7 @@ function PostForm() {
   
     const onSubmit = e => {
         e.preventDefault();
-        if (values.title !== '') {
+        if (values.title.trim() !== '') {
             CreatePost();
         } else {
             setErrors({ title: 'Title cannot be empty' });
