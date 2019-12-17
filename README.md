@@ -9,7 +9,7 @@
 Authentication using JSON Web Tokens and Apollo Client Cache to temporarily store fetched results on frontend. Built with React Hooks (including apollo hooks) and the Semantic UI Library. This can be used to create various different applications with a data from a backend database and/or other Servers/APIs. Cron timed jobs for workers with axios get requests on backend to fetch external data from APIS incrementally (every day). Redis to temporarily store fetched API data on backend.
 
 ### Application Diagram
-![Diagram](https://github.com/MrYKenz/MERN-GraphQL-App/blob/master/app_layout.jpg)
+<div style="text-align:center">![Diagram](https://github.com/MrYKenz/MERN-GraphQL-App/blob/master/app_layout.jpg)</div>
 
 ### To-Do: 
 - ~~create post component with authentication if jwt expired~~
