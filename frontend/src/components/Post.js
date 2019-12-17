@@ -17,7 +17,7 @@ const Post = ({post: { id, title, body, username, createdAt }}) => (
         <Card.Meta>{username}</Card.Meta>
         <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
         <Card.Description>
-          {body}
+          {body.slice(0, 250)+"..."}
         </Card.Description>
       </Card.Content>
     </Card>

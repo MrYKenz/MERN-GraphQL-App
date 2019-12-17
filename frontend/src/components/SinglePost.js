@@ -5,7 +5,6 @@ import moment from 'moment';
 const SinglePost = ({post: { title, body, username, 
   createdAt }, user, onClick}) => (
   <>
-  <Card.Group>
     <Card fluid>
       <Card.Content>
         <Image
@@ -29,7 +28,6 @@ const SinglePost = ({post: { title, body, username,
           </Button>
       </Card.Content>)}
     </Card>
-  </Card.Group>
   </>
 );
 

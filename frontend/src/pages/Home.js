@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import Post from '../components/Post';
 import PostForm from '../components/PostForm';
 import { AuthContext } from '../Auth';
+import Jobs from '../components/Jobs';
 
 const GET_POSTS_QUERY = gql`
     {getPosts {id title body username createdAt}}
@@ -21,6 +22,7 @@ function Home() {
                 <Post post={post} key={post.id} />)
             )
         }
+        <Jobs />
      </div>
     )
 }

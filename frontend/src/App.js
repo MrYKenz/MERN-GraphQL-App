@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Details from './pages/Details';
+import JobDetails from './pages/JobDetails';
 import Header from './components/Header';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
@@ -35,6 +36,7 @@ function App() {
             <Header/>
             <Route exact path='/' component={Home}/>
             <Route exact path='/posts/:postID' component={Details}/>
+            <Route exact path='/jobs/:jobID' component={JobDetails}/>
             <AuthRoute exact path='/Login' component={Login}/>
             <AuthRoute exact path='/Register' component={Register}/>
           </Router>
