@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 require('dotenv').config(); // environment variables
 const typeDefs = require('./gql/typeDefs'); // type defintions file in subdirectory
 const resolvers = require('./gql/resolvers'); // index.js in gql resolvers subdirectory
+const cron = require('./worker/cron') // execute cronjobs
 
-// connect to DB
 mongoose
     .connect(process.env.DB_URI, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log("Connected to MongoDB"));

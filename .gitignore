@@ -4,6 +4,8 @@
 /backend/node_modules
 .env
 /backend/.env
+# redis dump
+/backend/dump.rdb
 
 ### FRONTEND - REACT ###
 

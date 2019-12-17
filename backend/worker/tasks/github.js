@@ -1,12 +1,11 @@
 const axios = require('axios');
 const redis = require('redis');
-const {promisify} = require('util');
-
+const bluebird = require('bluebird');
 const client = redis.createClient();
-// const getAsync = promisify(client.get).bind(client);
-const setAsync = promisify(client.set).bind(client);
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
 
-client.on('connect', () => console.log('Redis client connected'));
+client.on('connect', () => console.log('github worker connected to redis'));
 
 const fetchGithubJobs = async () => {
     let jobs = [];
@@ -28,20 +27,13 @@ const fetchGithubJobs = async () => {
         // reset page no. for next fetch
         pageNum = 1;
     }
-    console.log('GITHUB FETCH COMPLETE!');
-    client.set('github', JSON.stringify(jobs), redis.print);
-    // const success = await setAsync('gihub', JSON.stringify(jobs));
-    // console.log({success});
-    client.get('github', (error, result) => {
-        if (error) {
-            console.log(error);
-            throw error;
-        }
-        console.log(result);
-    });
+    try {
+        client.setAsync('github', JSON.stringify(jobs));
+        console.log('GITHUB FETCH COMPLETE!');
+    } catch(error) {
+        return error
+    }
 }
-
 fetchGithubJobs();
-
 
 module.exports = fetchGithubJobs;
