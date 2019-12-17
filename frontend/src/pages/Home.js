@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import Post from '../components/Post';
 import PostForm from '../components/PostForm';
-import { AuthContext } from '../Auth';
 import Jobs from '../components/Jobs';
+import { AuthContext } from '../Auth';
 
 const GET_POSTS_QUERY = gql`
     {getPosts {id title body username createdAt}}
