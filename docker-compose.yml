@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mongodb:
+    image: "mongo"
+    ports:
+     - "27017:27017"
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+    - 6379 
+  backend:
+    build: ./backend/
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - mongodb
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://cache
+  frontend:
+    build: ./frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app
+    depends_on:
+      - backend
