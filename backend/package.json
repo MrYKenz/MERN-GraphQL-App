@@ -18,6 +18,7 @@
     "graphql": "^14.5.8",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.13",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "rss-parser": "^3.7.3"
   }
 }
