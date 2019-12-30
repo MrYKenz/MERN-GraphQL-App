@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import Post from '../components/Post';
 import PostForm from '../components/PostForm';
 import Jobs from '../components/Jobs';
+import Jobs2 from '../components/Jobs2';
 import { AuthContext } from '../Auth';
 
 const GET_POSTS_QUERY = gql`
@@ -23,6 +24,7 @@ function Home() {
             )
         }
         <Jobs />
+        <Jobs2 />
      </div>
     )
 }
