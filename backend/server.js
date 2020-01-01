@@ -8,12 +8,13 @@ const cron = require('./worker/cron') // execute cronjobs
 
 mongoose
     .connect(process.env.DB_URI, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
-    .then(() => console.log("Connected to MongoDB"));
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.log("Cannot connect to MongoDB"))
 
 // ApolloServer constructor with GQL Schema Definitions and Resolvers
 // Context argument takes request from Express and forwards it to Context
 const app = new ApolloServer({typeDefs, resolvers, context: (req)=>(req)});
 
 // launch webserver on port 5000 // use prcoess.env.PORT ??
-app.listen({port:5000})
+app.listen({port: process.env.PORT || 5000})
     .then(res => console.log(`Server on port: ${res.port}`));
