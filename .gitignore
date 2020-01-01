@@ -6,6 +6,8 @@
 /backend/.env
 # redis dump
 /backend/dump.rdb
+/backend/github.json
+/backend/stackoverflow.json
 
 ### FRONTEND - REACT ###
 

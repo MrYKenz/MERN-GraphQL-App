@@ -1,11 +1,13 @@
 const axios = require('axios');
-const redis = require('redis');
-const bluebird = require('bluebird');
-const client = redis.createClient();
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
+const fs = require('fs');
+// const redis = require('redis');
+// const bluebird = require('bluebird');
+// const client = redis.createClient();
+// bluebird.promisifyAll(redis.RedisClient.prototype);
+// bluebird.promisifyAll(redis.Multi.prototype);
 
-client.on('connect', () => console.log('github worker connected to redis'));
+// client.on('connect', () => console.log('github worker connected to redis'));
+// fix for no redis:
 
 const fetchGithubJobs = async () => {
     let jobs = [];
@@ -27,12 +29,14 @@ const fetchGithubJobs = async () => {
         // reset page no. for next fetch
         pageNum = 1;
     }
-    try {
-        client.setAsync('github', JSON.stringify(jobs));
-        console.log('GITHUB FETCH COMPLETE!');
-    } catch(error) {
-        return error
-    }
+    // not using redis on Heroku
+    fs.writeFileSync('github.json', JSON.stringify(...jobs), 'utf8');
+    // try {
+    //     client.setAsync('github', JSON.stringify(jobs));
+    //     console.log('GITHUB FETCH COMPLETE!');
+    // } catch(error) {
+    //     return error
+    // }
 }
 fetchGithubJobs();
 

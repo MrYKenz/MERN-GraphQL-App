@@ -1,13 +1,14 @@
 const Parser = require('rss-parser');
-const redis = require('redis');
-const bluebird = require('bluebird');
+const fs = require('fs');
+// const redis = require('redis');
+// const bluebird = require('bluebird');
 
 const parser = new Parser();
-const client = redis.createClient();
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
+// const client = redis.createClient();
+// bluebird.promisifyAll(redis.RedisClient.prototype);
+// bluebird.promisifyAll(redis.Multi.prototype);
 
-client.on('connect', () => console.log('StackOverflow worker connected to redis'));
+// client.on('connect', () => console.log('StackOverflow worker connected to redis'));
 
 const fetchSOJobs = async () => {
     let jobs = [];
@@ -21,12 +22,14 @@ const fetchSOJobs = async () => {
     } catch(error) {
         console.log("StackOverflow Fetch Failed!");
     }
-    try {
-        client.setAsync('stackoverflow', JSON.stringify(jobs));
-        console.log('STACKOF FETCH COMPLETE!');
-    } catch(error) {
-        return error
-    }
+    // not using redis on heroku
+    fs.writeFileSync('stackoverflow.json', JSON.stringify(...jobs), 'utf8');
+    // try {
+    //     client.setAsync('stackoverflow', JSON.stringify(jobs));
+    //     console.log('STACKOF FETCH COMPLETE!');
+    // } catch(error) {
+    //     return error
+    // }
 }; fetchSOJobs();
 
 module.exports = fetchSOJobs;
