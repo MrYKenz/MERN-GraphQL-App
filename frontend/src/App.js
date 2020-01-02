@@ -17,7 +17,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { AuthProvider, AuthContext } from './Auth';
 
 // apollo-link-http to connect graphql API to apollo-client and jwt added with apollo-link-context
-const serverUri = createHttpLink({ uri: 'https://londondevjobs.herokuapp.com/graphql'});
+const serverUri = createHttpLink({ uri: location.protocol + '//londondevjobs.herokuapp.com/graphql'});
 const authLink = setContext(() => { return { headers: {authorization: localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : ''}}})
 const client = new ApolloClient({ link: authLink.concat(serverUri), cache: new InMemoryCache()})
 // if authenticated redirect away from register & login pages
