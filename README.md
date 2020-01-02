@@ -10,6 +10,13 @@ This is a skeleton/boilerplate full stack MERN application with user generated p
 
 ### Details
 Authentication using JSON Web Tokens and Apollo Client Cache to temporarily store fetched results on frontend. Built with React Hooks (including apollo hooks) and the Semantic UI Library. Cron timed jobs for workers with axios get requests on backend to fetch external data from APIS incrementally (every day). Redis to temporarily store fetched API data on backend in seperate environment.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5bd9efa7-56ac-4264-abbe-1f14397307cc/deploy-status)](https://app.netlify.com/sites/londondevjobs/deploys)
+
+The project can be viewed on Netlify where the front-end has been deployed:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5bd9efa7-56ac-4264-abbe-1f14397307cc/deploy-status)](https://app.netlify.com/sites/londondevjobs/deploys)
+The back-end is deployed to Heroku with NODE_ENV set to development so graphql playground can be used:
+[Backend API](https://londondevjobs.herokuapp.com/)
+As Redis on Heroku requires a signup I have changed the code to use fs read and write files instead.
 
 ### Application Diagram
 <p align="center"><img src="https://github.com/MrYKenz/MERN-GraphQL-App/blob/master/app_layout.jpg"/></p>
