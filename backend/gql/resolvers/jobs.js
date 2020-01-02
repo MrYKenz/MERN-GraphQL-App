@@ -18,9 +18,9 @@ module.exports = {
             // }
             let jobs;
             if(key == 'github'){
-                jobs = fs.readFileSync('github.json', 'utf8');
+                jobs = fs.readFileSync('github.txt', 'utf8');
             } else if (key == 'stackoverflow') {
-                jobs = fs.readFileSync('stackoverflow.json', 'utf8');
+                jobs = fs.readFileSync('stackoverflow.txt', 'utf8');
             }
             return jobs;
         }

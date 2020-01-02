@@ -30,7 +30,7 @@ const fetchGithubJobs = async () => {
         pageNum = 1;
     }
     // not using redis on Heroku
-    fs.writeFileSync('github.json', JSON.stringify(...jobs), 'utf8');
+    fs.writeFileSync('github.txt', JSON.stringify(jobs), 'utf8');
     // try {
     //     client.setAsync('github', JSON.stringify(jobs));
     //     console.log('GITHUB FETCH COMPLETE!');

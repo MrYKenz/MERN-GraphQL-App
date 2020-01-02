@@ -8,6 +8,8 @@
 /backend/dump.rdb
 /backend/github.json
 /backend/stackoverflow.json
+/backend/github.txt
+/backend/stackoverflow.txt
 
 ### FRONTEND - REACT ###
 

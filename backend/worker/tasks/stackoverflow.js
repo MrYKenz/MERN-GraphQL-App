@@ -23,7 +23,7 @@ const fetchSOJobs = async () => {
         console.log("StackOverflow Fetch Failed!");
     }
     // not using redis on heroku
-    fs.writeFileSync('stackoverflow.json', JSON.stringify(...jobs), 'utf8');
+    fs.writeFileSync('stackoverflow.txt', JSON.stringify(jobs), 'utf8');
     // try {
     //     client.setAsync('stackoverflow', JSON.stringify(jobs));
     //     console.log('STACKOF FETCH COMPLETE!');
