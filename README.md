@@ -14,7 +14,7 @@ Authentication using JSON Web Tokens and Apollo Client Cache to temporarily stor
 ### :rocket: Deployed 
 [**CLICK FOR DEMO**](https://londondevjobs.netlify.com/)
 
-The project can be viewed on Netlify where the front-end has been deployed [![Netlify Status](https://api.netlify.com/api/v1/badges/5bd9efa7-56ac-4264-abbe-1f14397307cc/deploy-status)].
+The project can be viewed on Netlify where the front-end has been deployed ![Netlify Status](https://api.netlify.com/api/v1/badges/5bd9efa7-56ac-4264-abbe-1f14397307cc/deploy-status).
 
 The back-end is deployed to Heroku with NODE_ENV set to development so graphql playground can be used:
 [Backend API](https://londondevjobs.herokuapp.com/)
